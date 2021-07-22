@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import styles from 'styled-components';
 import './App.css';
+import Filtro from './Components/Filtro';
+import Header from './Components/Header';
+import Carrinho from './Components/Carrinho';
+import Produtos from './Components/Produtos';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <header> <Header /> </header>
+
+      <br /> <br /> <br /> <br />
+
+      <main className='grid-principal'>
+
+        <div> <Filtro /> </div>
+        <div> <Produtos /> </div>
+        <div> <Carrinho /> </div>
+
+      </main>
+
+      <footer>  </footer>
+      
     </div>
   );
 }
