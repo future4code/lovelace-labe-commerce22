@@ -1,11 +1,34 @@
 import React from 'react';
 import './Components.css';
-import styles from 'styled-components';
+import styled from 'styled-components';
 
-function Carrinho() {
+class Carrinho extends React.Component {
+    state = {
+        produtos: [
+            {
+                id: 1,
+                name: "Foguete da Missão Apollo 11",
+                value: 10000.0,
+                imageUrl: "https://picsum.photos/200/200",
+            }
+        ]
 
-    return (
-        <div className='card-carrinho'>
+    };
+
+    apagarPost = (id) => {
+        const novaListaDeProdutos = this.state.listaDeProdutos.filter((produtos) => {
+            if (id === produtos.id) {
+                return false
+            } else {
+                return true
+            }
+        })
+        this.setState({ listaDeProdutos: novaListaDeProdutos })
+    };
+    
+    render () {
+    return(
+        <div className = 'card-carrinho'>
 
             <div>
 
@@ -16,6 +39,7 @@ function Carrinho() {
 
             <br />
 
+            <button onClick="apagarPost()">Remover</button>
             <div>
 
                 Valor Total: 0,00
@@ -25,7 +49,9 @@ function Carrinho() {
             </div>
 
         </div>
-    )
+    );
+
+    }
 }
 
 export default Carrinho

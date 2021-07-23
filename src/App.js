@@ -6,7 +6,14 @@ import Header from './Components/Header';
 import Carrinho from './Components/Carrinho';
 import Produtos from './Components/Produtos';
 
-function App() {
+class App extends React.Component {
+  state = {
+    minFilter:"",
+    maxFilter:"",
+    nameFilter:""
+  }
+
+render(){
   return (
     <div>
 
@@ -16,8 +23,16 @@ function App() {
 
       <main className='grid-principal'>
 
-        <div> <Filtro /> </div>
-        <div> <Produtos /> </div>
+        <div> <Filtro 
+        minFilter={this.state.minFilter}
+        maxFilter={this.state.maxFilter}
+        nameFilter={this.state.nameFilter}
+        /> </div>
+        <div> <Produtos
+             minFilter={this.state.minFilter}
+             maxFilter={this.state.maxFilter}
+             nameFilter={this.state.nameFilter}/> 
+        </div>
         <div> <Carrinho /> </div>
 
       </main>
@@ -26,6 +41,7 @@ function App() {
       
     </div>
   );
+  }
 }
 
 export default App;

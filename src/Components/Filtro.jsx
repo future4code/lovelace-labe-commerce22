@@ -1,9 +1,10 @@
 import React from 'react';
 import './Components.css';
 import styles from 'styled-components';
+import { render } from '@testing-library/react';
 
-function Filtro() {
-
+class Filtro extends React.Component {
+    render(){
     return (
         <div className='card-filtro'>
 
@@ -18,21 +19,25 @@ function Filtro() {
 
             <div>
 
-                <label> Valor Mínimo: </label>
+                <div> Valor Mínimo: </div>
                 <br />
-                <input></input>
+                <input type = "number"
+                value={this.props.minFilter}/>
 
                 <br /><br />
 
-                <label> Valor Máximo: </label>
+                <div> Valor Máximo: </div>
                 <br />
-                <input></input>
+                <input type = "number"
+                value={this.props.maxFilter}/>
 
                 <br /><br />
 
-                <label> Nome do produto: </label>
+                <div> Nome do produto: </div>
                 <br />
-                <input></input>
+                <input type = "text"
+                value={this.props.nameFilter}
+                />
 
                 <br /><br />
 
@@ -40,7 +45,8 @@ function Filtro() {
 
 
         </div>
-    )
+    );
+}
 }
 
 export default Filtro
