@@ -1,80 +1,60 @@
 import React from 'react';
+import CardProdutos from './CardProdutos.jsx';
 import './Components.css';
-import styles from 'styled-components';
 
-function Produtos() {
+class Produtos extends React.Component {
 
-    return (
-        <div className='card-todos-os-produtos'>
+    state = {
+        sort: 'DECRESCENTE'
+    }    
+
+    filtrarListaDeProdutos = () => {
+        return this.props.produtos
+            .filter((produto) => this.props.valorMaximo ? produto.preco < this.props.valorMaximo : true)
+            .filter((produto) => this.props.valorMinimo ? produto.preco > this.props.valorMaximo : true)
+            .filter((produto) => this.props.pesquisar ? produto.nome.includes(this.props.pesquisar) : true)
+            .sort((a, b) => this.state.sort === 'CRESCENTE' ? a.preco - b.preco : b.preco - a.preco)
+    }
+
+    onChangeSort = (event) => {
+        this.setState({sort: event.target.value})
+    }
+
+    render() {
+
+        const listaDeProdutos = this.filtrarListaDeProdutos()
+
+        return (
 
             <div>
 
-                <br />
-                <h3 className='centralizar-titulos'> Todos os Produtos </h3>
+                <div className='card-todos-os-produtos'>
 
+                    <h3 className='centralizar-titulos'> Todos os Produtos </h3>
+
+                    <label> Ordenar produtos:
+
+                        <select name="Ordenar" className='centralizar-titulos' value={this.state.sort} onChange={this.onChangeSort}>
+                            <option value='CRESCENTE'> Crescente </option>
+                            <option value='DECRESCENTE'> Decrescente </option>
+                        </select>
+
+                    </label>
+
+                </div>
+
+                <div>
+
+                    {listaDeProdutos.map((produto) => {
+                        return <CardProdutos
+                            produto = {produto}
+                            adicionarProdutoAoCarrinho = {this.props.adicionarProdutoAoCarrinho}
+                        />
+                    })}
+                </div>
             </div>
-
-            <br />
-
-            <div className = 'grid-de-produtos'>
-
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=1" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-                
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=2" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=3" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=4" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=5" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-
-                <div className = 'card-produto-individual'>
-                    
-                    <h3> Produto 1 </h3>
-                    <img src="https://picsum.photos/200/200?random=6" alt="produto1" />
-                    <div> R$ 599,90 </div>
-
-                </div>
-
-
-               
-
-               
-                
-            </div>
-
-        </div>
-    )
+        )
+    }
 }
 
-export default Produtos
+export default Produtos;
