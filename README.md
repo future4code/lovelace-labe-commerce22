@@ -1,1 +1,5 @@
-Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+# Projeto: Labe-Commerce
+
+#### Grupo: Clarice Passos; Natan Benfica.
+
+#### Link do surge ---> phobic-time.surge.sh

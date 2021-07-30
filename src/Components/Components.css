@@ -1,0 +1,47 @@
+.centralizar-titulos {
+    text-align: center;
+    margin: auto;
+}
+
+.card-filtro {
+    border: 2px solid black;
+    padding-left: 5%;
+}
+
+.card-header {
+    border-bottom: 2px solid black;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr ;
+    justify-items: center;
+    padding: 10px;
+    
+}
+
+.card-carrinho {
+    border: 2px solid black;
+    padding-left: 5%;
+}
+
+.card-todos-os-produtos {
+    border: 2px solid black;
+    padding: 1%;
+}
+
+.grid-de-produtos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    margin: auto;
+    justify-items: stretch;
+    gap: 5px;
+}
+
+.card-produto-individual {
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
